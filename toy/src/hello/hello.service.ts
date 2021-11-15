@@ -1,8 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, ShutdownSignal } from '@nestjs/common';
 
 @Injectable()
 export class HelloService {
-  showing(): string {
+  async showing(): Promise<string> {
     return 'here is for hello page';
+  }
+  async reShowing(content: string): Promise<string> {
+    return `${content} is re showing !!!`;
   }
 }
