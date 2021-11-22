@@ -1,4 +1,4 @@
-import { Injectable, ShutdownSignal } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class HelloService {

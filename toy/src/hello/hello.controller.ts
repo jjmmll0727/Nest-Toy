@@ -1,17 +1,39 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Logger,
+  HttpCode,
+  Post,
+  Body,
+} from '@nestjs/common';
 import { HelloService } from './hello.service';
+import { HelloBodyDTO } from './hello-body.dto';
 
 @Controller('hello')
 export class HelloController {
-  constructor(private readonly helloService: HelloService) {} // 반드시 있어야 service를 가져올 수 있아
+  constructor(private readonly helloService: HelloService) {}
+  logger: Logger = new Logger(HelloController.name);
 
   @Get()
+  @HttpCode(200)
   async showing(): Promise<string> {
-    return this.helloService.showing();
+    try {
+      return await this.helloService.showing();
+    } catch (error) {
+      this.logger.error(error?.message ?? '');
+      throw error;
+    }
   }
 
   @Get('/:content')
+  @HttpCode(200)
   async reShowing(@Param('content') content: string): Promise<string> {
-    return this.helloService.reShowing(content);
+    try {
+      return await this.helloService.reShowing(content);
+    } catch (error) {
+      this.logger.error(error?.message ?? '');
+      throw error;
+    }
   }
 }
