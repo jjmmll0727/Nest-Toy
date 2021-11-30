@@ -4,12 +4,12 @@ import { Repository } from 'typeorm';
 
 import { InjectRepository } from '@nestjs/typeorm';
 
-@Injectable()
+@Injectable() // 다음 데코레이터를 통해 다른 어떤 컴포넌트에서 주입 받을 수 있다.
 export class UserService {
     constructor(
         @InjectRepository(User)
         private userRepository: Repository<User>,
-    ) {}
+    ) {} // 의존성 주입을 받았다.
     showing() {
         return 'here is for hello page';
     }
