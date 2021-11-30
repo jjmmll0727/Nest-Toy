@@ -1,4 +1,3 @@
-import { PrimaryKey } from 'sequelize-typescript';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

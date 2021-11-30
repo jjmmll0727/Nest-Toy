@@ -10,13 +10,13 @@ export class UserService {
         @InjectRepository(User)
         private userRepository: Repository<User>,
     ) {}
-    async showing(): Promise<string> {
+    showing() {
         return 'here is for hello page';
     }
-    async reShowing(content: string): Promise<string> {
+    reShowing(content: string): string {
         return `${content} is re showing !!!`;
     }
-    async returing(content: string): Promise<string> {
+    returing(content: string): string {
         return `${content} is returing by post method !! `;
     }
     async signup(email: string): Promise<User> {

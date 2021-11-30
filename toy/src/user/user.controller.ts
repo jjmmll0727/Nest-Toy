@@ -16,10 +16,9 @@ export class UserController {
     logger: Logger = new Logger(UserController.name);
 
     @Get()
-    @HttpCode(200)
-    async showing(): Promise<string> {
+    async showing() {
         try {
-            return await this.userService.showing();
+            return this.userService.showing();
         } catch (error) {
             this.logger.error(error?.message ?? '');
             throw error;
@@ -27,10 +26,9 @@ export class UserController {
     }
 
     @Get('/:content')
-    @HttpCode(200)
-    async reShowing(@Param('content') content: string): Promise<string> {
+    async reShowing(@Param('content') content: string) {
         try {
-            return await this.userService.reShowing(content);
+            return this.userService.reShowing(content);
         } catch (error) {
             this.logger.error(error?.message ?? '');
             throw error;
@@ -38,12 +36,11 @@ export class UserController {
     }
 
     @Post('/content')
-    @HttpCode(201)
-    async returing(@Body() body: UserBodyDTO): Promise<string> {
+    async returing(@Body() body: UserBodyDTO) {
         try {
             const content = body.content;
             console.log(content);
-            return await this.userService.returing(content);
+            return this.userService.returing(content);
         } catch (error) {
             this.logger.error(error?.message ?? '');
             throw error;
